@@ -1,0 +1,29 @@
+{{> header}}
+
+
+
+<div class="container">
+    <table class="table striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Word</th>
+                <th scope="col">Persian Meaning</th>
+                <th scope="col">English meaning</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each words}}
+                <tr id={{id}} class="word-list-class">
+                    <th scope="row">{{calculation @index}}</th>
+                    <td>{{english_word}}</td>
+                    <td>{{meaning}}</td>
+                    <td>{{full_english_meaning}}</td>
+                    <td><button class="btn btn-success deleteButton" id={{id}}>Delete</button></td>
+                </tr>
+            {{/each}} 
+        </tbody>
+    </table>
+
+</div>
