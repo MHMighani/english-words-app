@@ -36,10 +36,10 @@ const orm = {
         })
     },
 
-    insertOne: function(word_name,word_meaning,full_english_meaning,cb){  
+    insertOne: function(category,word_name,word_meaning,full_english_meaning,cb){  
         console.log(full_english_meaning);
          
-        const sqlQuery1 = `insert into all_words(english_word,meaning,full_english_meaning) values('${word_name}','${word_meaning}','${full_english_meaning}')`;
+        const sqlQuery1 = `insert into all_words(english_word,meaning,full_english_meaning,category) values('${word_name}','${word_meaning}','${full_english_meaning}','${category}')`;
         connection.query(sqlQuery1,function(err,data){
             if(err) cb(err,null)
             cb(null,data)

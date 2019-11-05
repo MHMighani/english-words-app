@@ -101,7 +101,10 @@ $(".deleteButton").on("click", function(event){
 
 $("button#saveButton").on("click",function(event){
     event.preventDefault()
+    
     let text = ""
+    let categorySelected = $("#categorySelectForm").val()
+
     $("input:checkbox:checked").each(function(){
         text = ($(this).siblings()[0].innerText) + "\n" + text;
     })
@@ -110,11 +113,13 @@ $("button#saveButton").on("click",function(event){
     if(text===""){
         text = $("p#1.def")[0].innerText
     }
+    
 
     $.ajax({
         url:"/add",
         method:"POST",
         data:{
+            category:categorySelected,
             word_name:word_name,
             word_meaning:word_meaning,
             full_english_meaning:text,

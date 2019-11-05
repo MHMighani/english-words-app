@@ -3,7 +3,9 @@ body{
     flex-flow: column wrap;
     justify-content: center;
     align-items: center;
-    background:rgba(121, 123, 124, 0.267);
+    background: lightblue url("../img/index\ -background.jpg") no-repeat fixed center;
+    background-size: cover;
+
 }
 
 .meaning-class{

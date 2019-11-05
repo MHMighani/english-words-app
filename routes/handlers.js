@@ -42,6 +42,7 @@ router.post("/add-category",(req,res)=>{
 })  
 
 router.post("/add",(req,res)=>{
+    const category = req.body.category;
     const word_name = req.body.word_name;
     const word_meaning = req.body.word_meaning;
     const full_english_meaning = req.body.full_english_meaning;
@@ -52,13 +53,14 @@ router.post("/add",(req,res)=>{
     })
     
     
-    orm.insertOne(word_name,word_meaning,full_english_meaning,function(err,word){
+    orm.insertOne(category,word_name,word_meaning,full_english_meaning,function(err,word){
         if(err){            
             return res.status(401).json({
                 message: "not able to add the word"
             })
         }
         return res.json({
+            category:category,
             word_name:word_name,
             word_meaning:word_meaning,
             full_english_meaning:full_english_meaning,
