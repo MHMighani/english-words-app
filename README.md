@@ -1,4 +1,4 @@
-#Database Configuration
+# Database Configuration
 
 add `connection.js` to the `config` folder and connect your database to the app with code below filled by your database configuration:
 

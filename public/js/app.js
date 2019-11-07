@@ -40,10 +40,26 @@ const dictionaryApi = async (word)=>{
     }
             
     const jsonResponse = await res.json()
+    console.log(typeof(jsonResponse[0]));
+    if(typeof(jsonResponse[0])==="string"){
+        alternativeResults = jsonResponse.slice(0,3)
 
-    // changeButtonAppearence()
+        resultLi = `
+            <li class='meaning-li'>
+                <h3>No meaning found</h3>  
+                <p>Did you mean: <strong>${alternativeResults[0]},
+                ${alternativeResults[1]},
+                ${alternativeResults[2]} </strong></p>   
+             </li>
+        `
+        resultListSection.append(resultLi)
+        return
+    }
+
     let counter = 1
     jsonResponse.map((result,index)=>{
+        console.log(typeof(result.shortDef)=="undefined");
+        
         result.shortdef.map(shortDef=>{
             resultLi = `
                 <li class='meaning-li'>
@@ -104,15 +120,21 @@ $("button#saveButton").on("click",function(event){
     
     let text = ""
     let categorySelected = $("#categorySelectForm").val()
-
-    $("input:checkbox:checked").each(function(){
-        text = ($(this).siblings()[0].innerText) + "\n" + text;
-    })
+    let resultsFound = $("input:checkbox:checked")[0]
     
-    //choosing the first definition if nothing is choosed
-    if(text===""){
-        text = $("p#1.def")[0].innerText
+    //checking if the result is found
+    if(typeof(resultsFound)!=="undefined"){
+        $("input:checkbox:checked").each(function(){
+            text = ($(this).siblings()[0].innerText) + "\n" + text;
+        })
+        
+        //choosing the first definition if nothing is choosed
+        if(text===""){
+            text = $("p#1.def")[0].innerText
+        }
     }
+    
+    
     
 
     $.ajax({

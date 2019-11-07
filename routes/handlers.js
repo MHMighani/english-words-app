@@ -46,15 +46,11 @@ router.post("/add",(req,res)=>{
     const word_name = req.body.word_name;
     const word_meaning = req.body.word_meaning;
     const full_english_meaning = req.body.full_english_meaning;
-
-    orm.countRecords(function(err,count){
-        let result = count[0]['count(*)']
-        return result
-    })
-    
     
     orm.insertOne(category,word_name,word_meaning,full_english_meaning,function(err,word){
-        if(err){            
+        if(err){
+            console.log(err);
+                       
             return res.status(401).json({
                 message: "not able to add the word"
             })
