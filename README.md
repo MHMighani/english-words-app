@@ -1,18 +1,15 @@
 # Database Configuration
 
-add `connection.js` to the `config` folder and connect your database to the app with code below filled by your database configuration:
 
+add a file named `config.js` in `config` folder and put your mysql database configuration in it:
 ```
-const mysql = require("mysql")
+    const configInformation = {
+        host:"",
+        user:"",
+        password:"",
+        multipleStatements:true
+    }
 
-let connection = mysql.createConnection({
-    host:"localhost",
-    user:"",
-    password:"",
-    database:"english_words"
-})
-
-connection.connect()
-
-module.exports = connection
+    module.exports = configInformation
+    
 ```
