@@ -16,3 +16,6 @@ create table all_words(
 		references all_categories(name)
         on delete cascade
 );
+
+SET foreign_key_checks = 0;
+ALTER TABLE all_words CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_persian_ci;
