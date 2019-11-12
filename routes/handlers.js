@@ -8,9 +8,10 @@ router.get("/",function (req,res){
         if(err){
             return res.status(501).json({
                 message:"ops sth bad happend"
+    
             })
         }        
-        res.render("index",{category,style:"index"})
+        res.render("index",{category,style:"index",jsFile:"index"})
     })   
 })
 
@@ -22,7 +23,7 @@ router.get("/all",function (req,res){
                 message:"couldnt query from database"
             })
         }
-        res.render("all",{words,style:"all"})
+        res.render("all",{words,style:"all",jsFile:"all"})
     })
 })
 
@@ -50,7 +51,6 @@ router.post("/add",(req,res)=>{
     orm.insertOne(category,word_name,word_meaning,full_english_meaning,function(err,word){
         if(err){
             console.log(err);
-                       
             return res.status(401).json({
                 message: "not able to add the word"
             })
